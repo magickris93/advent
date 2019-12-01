@@ -22,3 +22,11 @@
 ;; 1a answer
 fuel_sum
 
+(defn total_mass
+  [mass total]
+  (def fuel (calculate_fuel mass))
+  (if (< 0 fuel) (total_mass fuel (+ total fuel)) total))
+  
+
+;; 1b answer
+(reduce + (map #(total_mass % 0) converted_input))
